@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace APBD3.Models;
 
-public class LiquidContainer : Container // TODO: Notyfikacje
+public class LiquidContainer : Container, IHazardNotifier
 {
     public CargoDanger CargoDanger { get; }
     
@@ -35,7 +35,25 @@ public class LiquidContainer : Container // TODO: Notyfikacje
         base.LoadCargo(cargoToAdd);
         if (CargoWeight > CargoLimit)
         {
-            // TODO: Notifikacja
+            SendNotification(new HazardNotification("Liquid threshold exciting", SerialNumber));
         }
+    }
+
+    private void SendNotification(HazardNotification notification)
+    {
+        foreach (var listener in _listeners)
+            listener.Invoke(notification);
+    }
+
+    private readonly List<Action<HazardNotification>> _listeners = new();
+
+    public void Subscribe(Action<HazardNotification> listener)
+    {
+        _listeners.Add(listener);
+    }
+
+    public void Unsubscribe(Action<HazardNotification> listener)
+    {
+        _listeners.Remove(listener);
     }
 }
