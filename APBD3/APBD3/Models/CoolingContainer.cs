@@ -4,10 +4,10 @@ namespace APBD3.Models;
 
 public class CoolingContainer : Container
 {
-    public string CurrentProduct { get; private set; }
+    public string? CurrentProduct { get; private set; }
     public double ContainerTemperature { get; }
-    public double ProductTemperature { get; }
-    
+    public double ProductTemperature { get; private set; } = 0;
+
     public CoolingContainer(double height,
         double containerWeight,
         double depth,
@@ -21,16 +21,20 @@ public class CoolingContainer : Container
     {
         if (serialNumber.Type != ContainerType.Cooling)
             throw new InvalidOperationException("Wrong type");
+
+        ContainerTemperature = containerTemperature;
     }
 
-    public void LoadCargo(double cargoToAdd, string product, double productTemperature)
+    public void LoadCargo(double cargoToAdd, string? product, double productTemperature)
     {
         base.LoadCargo(cargoToAdd);
-        
-        if (CurrentProduct.Equals(null))
+
+        if (CurrentProduct == null)
         {
             CurrentProduct = product;
-        }else if (!CurrentProduct.Equals(product))
+            ProductTemperature = productTemperature;
+        }
+        else if (!CurrentProduct.Equals(product))
         {
             throw new ProductException("Wrong type of product");
         }
@@ -40,6 +44,14 @@ public class CoolingContainer : Container
             throw new ProductException("Temperature of container is too low for this product");
         }
     }
+
+    public override void UnloadCargo()
+    {
+        base.UnloadCargo();
+        CurrentProduct = null;
+        ProductTemperature = 0;
+    }
+    
     public override string ToString()
     {
         string productInfo = CurrentProduct != null ? $"Current Product: {CurrentProduct}\nProduct Temperature: {ProductTemperature} °C\n" : "No Product Loaded\n";
