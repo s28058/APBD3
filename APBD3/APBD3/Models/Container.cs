@@ -4,12 +4,14 @@ namespace APBD3.Models;
 
 public abstract class Container
 {
-    public double CargoWeight { get; private set; } = 0;
+    public double CargoWeight { get; protected set; } = 0;
     public double Height { get; private set; }
     public double ContainerWeight { get; private set; }
     public double Depth { get; private set; }
     public SerialNumber SerialNumber { get; private set; }
     public double MaxCargoWeight { get; private set; }
+
+    public double Volume => Depth * Height;
 
     public Container(double height, double containerWeight, double depth, SerialNumber serialNumber, double maxCargoWeight)
     {
@@ -29,7 +31,7 @@ public abstract class Container
         }
     }
 
-    public void UnloadCargo()
+    public virtual void UnloadCargo()
     {
         CargoWeight = 0;
     }
