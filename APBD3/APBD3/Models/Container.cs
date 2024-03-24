@@ -1,30 +1,29 @@
 using APBD3.Exeptions;
 
-namespace APBD3.Models.Base;
+namespace APBD3.Models;
 
 public abstract class Container
 {
-    public int CargoWeight { get; private set; }
-    public int Height { get; private set; }
-    public int ContainerWeight { get; private set; }
-    public int Depth { get; private set; }
-    public string SerialNumber { get; private set; }
-    public int MaxWeight { get; private set; }
+    public double CargoWeight { get; private set; } = 0;
+    public double Height { get; private set; }
+    public double ContainerWeight { get; private set; }
+    public double Depth { get; private set; }
+    public SerialNumber SerialNumber { get; private set; }
+    public double MaxCargoWeight { get; private set; }
 
-    public Container(int cargoWeight, int height, int containerWeight, int depth, string serialNumber, int maxWeight)
+    public Container(double height, double containerWeight, double depth, SerialNumber serialNumber, double maxCargoWeight)
     {
-        CargoWeight = cargoWeight;
         Height = height;
         ContainerWeight = containerWeight;
         Depth = depth;
         SerialNumber = serialNumber;
-        MaxWeight = maxWeight;
+        MaxCargoWeight = maxCargoWeight;
     }
 
-    public void LoadCargo(int cargoToAdd)
+    public virtual void LoadCargo(double cargoToAdd)
     {
         CargoWeight += cargoToAdd;
-        if (CargoWeight > MaxWeight)
+        if (CargoWeight > MaxCargoWeight)
         {
             throw new OverfillException();
         }
@@ -32,7 +31,7 @@ public abstract class Container
 
     public void UnloadCargo()
     {
-        
+        CargoWeight = 0;
     }
     
     
