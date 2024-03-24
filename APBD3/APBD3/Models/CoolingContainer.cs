@@ -40,4 +40,18 @@ public class CoolingContainer : Container
             throw new ProductException("Temperature of container is too low for this product");
         }
     }
+    public override string ToString()
+    {
+        string productInfo = CurrentProduct != null ? $"Current Product: {CurrentProduct}\nProduct Temperature: {ProductTemperature} °C\n" : "No Product Loaded\n";
+    
+        return $"Cooling Container Details:\n" +
+               $"Serial Number: {SerialNumber}\n" +
+               $"Height: {Height} meters\n" +
+               $"Depth: {Depth} meters\n" +
+               $"Container Weight: {ContainerWeight} kg\n" +
+               $"Max Cargo Weight: {MaxCargoWeight} kg\n" +
+               $"Current Cargo Weight: {CargoWeight} kg\n" +
+               $"Container Temperature: {ContainerTemperature} °C\n" +
+               $"{productInfo}";
+    }
 }

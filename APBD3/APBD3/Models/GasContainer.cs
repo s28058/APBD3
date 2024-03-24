@@ -38,6 +38,19 @@ public class GasContainer : Container, IHazardNotifier
         CargoWeight *= 0.05;
     }
     
+    public override string ToString()
+    {
+        return $"Gas Container Details:\n" +
+               $"Serial Number: {SerialNumber}\n" +
+               $"Height: {Height} meters\n" +
+               $"Depth: {Depth} meters\n" +
+               $"Container Weight: {ContainerWeight} kg\n" +
+               $"Max Cargo Weight: {MaxCargoWeight} kg\n" +
+               $"Current Cargo Weight: {CargoWeight} kg\n" +
+               $"Pressure: {Pressure} Pa\n";
+    }
+
+    
     private void SendNotification(HazardNotification notification)
     {
         foreach (var listener in _listeners)

@@ -41,6 +41,19 @@ public class LiquidContainer : Container, IHazardNotifier
             SendNotification(new HazardNotification("Liquid threshold exciting", SerialNumber));
         }
     }
+    
+    public override string ToString()
+    {
+        return $"Liquid Container Details:\n" +
+               $"Serial Number: {SerialNumber}\n" +
+               $"Height: {Height} meters\n" +
+               $"Depth: {Depth} meters\n" +
+               $"Container Weight: {ContainerWeight} kg\n" +
+               $"Max Cargo Weight: {MaxCargoWeight} kg\n" +
+               $"Current Cargo Weight: {CargoWeight} kg\n" +
+               $"Cargo Danger: {CargoDanger}\n" +
+               $"Cargo Limit: {CargoLimit} kg\n";
+    }
 
     private void SendNotification(HazardNotification notification)
     {
