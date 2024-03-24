@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APBD3", "APBD3\APBD3.csproj", "{CAA37149-0E38-422F-AA2D-E1AFF9849F42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAPBD3", "TestAPBD3\TestAPBD3.csproj", "{145500FE-175D-45CC-AC39-8D324BDBDAF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAA37149-0E38-422F-AA2D-E1AFF9849F42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAA37149-0E38-422F-AA2D-E1AFF9849F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAA37149-0E38-422F-AA2D-E1AFF9849F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAA37149-0E38-422F-AA2D-E1AFF9849F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{145500FE-175D-45CC-AC39-8D324BDBDAF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{145500FE-175D-45CC-AC39-8D324BDBDAF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{145500FE-175D-45CC-AC39-8D324BDBDAF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{145500FE-175D-45CC-AC39-8D324BDBDAF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
