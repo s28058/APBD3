@@ -16,6 +16,8 @@ public class GasContainer : Container, IHazardNotifier
         serialNumber,
         maxCargoWeight)
     {
+        if (serialNumber.Type != ContainerType.Gas)
+            throw new InvalidOperationException("Wrong type");
     }
 
     public override void LoadCargo(double cargoToAdd)

@@ -3,17 +3,17 @@ namespace APBD3.Models;
 public class SerialNumber
 {
     private const string Prefix = "KON";
-    private readonly ContainerType _type;
+    public ContainerType Type { get; }
     private readonly int _id;
 
     public SerialNumber(ContainerType type, int id)
     {
-        _type = type;
+        Type = type;
         _id = id;
     }
 
     private string TypeLabel => 
-        _type switch
+        Type switch
         {
             ContainerType.Cooling => "C",
             ContainerType.Gas => "G",

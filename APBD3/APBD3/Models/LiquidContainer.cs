@@ -20,6 +20,9 @@ public class LiquidContainer : Container, IHazardNotifier
         serialNumber,
         maxCargoWeight)
     {
+        if (serialNumber.Type != ContainerType.Liquid)
+            throw new InvalidOperationException("Wrong type");
+        
         CargoDanger = cargoDanger;
     }
 
