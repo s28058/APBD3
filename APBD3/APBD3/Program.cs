@@ -1,11 +1,14 @@
-﻿using APBD3.Models;
+﻿using APBD3;
+using APBD3.Models;
 
-var containerNumber = new SerialNumber(ContainerType.Liquid, 1);
-var container = new LiquidContainer(100, 20, 10, containerNumber, 100, CargoDanger.Hazardous);
+var serialNumberGenerator = new SerialNumberGenerator();
 
-container.Subscribe(HandleNotification);
+var containerNumber = serialNumberGenerator.Get(ContainerType.Liquid);
+var liquidContainer = new LiquidContainer(100, 20, 10, containerNumber, 100, CargoDanger.Hazardous);
 
-container.LoadCargo(80);
+liquidContainer.Subscribe(HandleNotification);
+
+liquidContainer.LoadCargo(80);
 
 Console.WriteLine("I'm done :D");
 
