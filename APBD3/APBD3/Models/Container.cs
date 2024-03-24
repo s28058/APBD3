@@ -1,3 +1,5 @@
+using APBD3.Exeptions;
+
 namespace APBD3.Models.Base;
 
 public abstract class Container
@@ -19,9 +21,13 @@ public abstract class Container
         MaxWeight = maxWeight;
     }
 
-    public void LoadCargo()
+    public void LoadCargo(int cargoToAdd)
     {
-        
+        CargoWeight += cargoToAdd;
+        if (CargoWeight > MaxWeight)
+        {
+            throw new OverfillException();
+        }
     }
 
     public void UnloadCargo()
